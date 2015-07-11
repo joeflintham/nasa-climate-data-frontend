@@ -22,7 +22,7 @@ PATHS = {
 
 var jsDocTemplateOptions = {
     path: 'ink-docstrap',
-    systemName: 'exony.charting',
+    systemName: 'nasa-climate-data',
     navType: 'vertical',
     theme: 'spacelab',
     linenums: true,
