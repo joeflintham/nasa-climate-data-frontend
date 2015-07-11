@@ -1,1 +1,0 @@
-var ncd=function(n){return n}(ncd||{});
