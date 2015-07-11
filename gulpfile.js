@@ -6,13 +6,29 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    jsdoc = require("gulp-jsdoc");
+    jsdoc = require("gulp-jsdoc"),
+    stylus = require('gulp-stylus'),
+    jade = require('gulp-jade');
 
 PATHS = {
-    JS: {
-	    SRC:[ 
+	SRC:{ 
+        JS: [
             'lib/*.js'
-	    ]
+	    ],
+        STYL: [
+            'stylus/*.styl'
+        ],
+        JADE: [
+            'jade/*.jade'
+        ],
+        VENDOR: {
+            JS: [
+                'bower_components/leaflet/dist/leaflet.js',
+            ],
+            CSS: [
+                'bower_components/leaflet/dist/leaflet.css',
+            ]
+        },
     },
     MAPS: {
         JS: 'app/source/'
@@ -31,9 +47,9 @@ var jsDocTemplateOptions = {
 };
 
 gulp.task('docs', function () {
-    gulp.src(PATHS.JS.SRC)
-	.pipe(jsdoc.parser())
-	.pipe(jsdoc.generator('./app/docs',jsDocTemplateOptions))
+    gulp.src(PATHS.SRC.JS)
+	    .pipe(jsdoc.parser())
+	    .pipe(jsdoc.generator('./app/docs',jsDocTemplateOptions))
 });
 
 gulp.task('test', function (done) {
@@ -45,15 +61,31 @@ gulp.task('test', function (done) {
 
 // build the main source into the min file
 gulp.task('js-lint', function () {
-    return gulp.src(PATHS.JS.SRC)
+    return gulp.src(PATHS.SRC.JS)
         .pipe(plumber())
         .pipe(jshint())
         .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('build', function () {
-    return gulp.src(PATHS.JS.SRC)
+
+    gulp.src(PATHS.SRC.JS)
         .pipe(uglify())
-        .pipe(gulp.dest('./app/scripts/lib/ncd.js'));
+        .pipe(gulp.dest('app/scripts/lib/'));
+    
+    gulp.src(PATHS.SRC.VENDOR.JS)
+        .pipe(gulp.dest('app/scripts/vendor/'));
+    
+    gulp.src(PATHS.SRC.VENDOR.CSS)
+        .pipe(gulp.dest('app/styles/vendor/'));
+    
+    gulp.src(PATHS.SRC.STYL)
+        .pipe(stylus())
+        .pipe(gulp.dest('app/styles/'))
+
+    gulp.src(PATHS.SRC.JADE)
+        .pipe(jade())
+        .pipe(gulp.dest('app/'));
+    
 });
 
