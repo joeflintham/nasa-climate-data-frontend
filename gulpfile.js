@@ -24,6 +24,7 @@ PATHS = {
         VENDOR: {
             JS: [
                 'bower_components/leaflet/dist/leaflet.js',
+                'bower_components/d3/d3.js',
             ],
             CSS: [
                 'bower_components/leaflet/dist/leaflet.css',
@@ -31,7 +32,7 @@ PATHS = {
         },
     },
     MAPS: {
-        JS: 'app/source/'
+        JS: 'source/'
     },
 
 }
@@ -70,7 +71,10 @@ gulp.task('js-lint', function () {
 gulp.task('build', function () {
 
     gulp.src(PATHS.SRC.JS)
-        .pipe(uglify())
+        .pipe(sourcemaps.init())
+//        .pipe(uglify())
+        .pipe(concat('main.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('app/scripts/lib/'));
     
     gulp.src(PATHS.SRC.VENDOR.JS)

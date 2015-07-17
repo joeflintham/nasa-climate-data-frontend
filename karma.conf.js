@@ -23,6 +23,8 @@ module.exports = function(config) {
         },
 
         files: [
+            'bower_components/leaflet/dist/leaflet-src.js',
+            'bower_components/d3/d3.js',
             'lib/*.js',
             'tests/*.js'
 	    ],
