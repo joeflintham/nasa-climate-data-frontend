@@ -1,8 +1,0 @@
-extends ./base.jade
-
-block bodytag
-  body(class='index')
-
-block pagecontent
-  article
-    <h1>Welcome</h1>
