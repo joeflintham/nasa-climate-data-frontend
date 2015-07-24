@@ -1,8 +1,5 @@
 extends ./base.jade
 
-block title
-  title='Nasa Climate Data Explorer - Home'
-
 block bodytag
   body(class='index')
 

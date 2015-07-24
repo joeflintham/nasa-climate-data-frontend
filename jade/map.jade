@@ -1,0 +1,25 @@
+extends ./base.jade
+
+block title
+  title='Nasa Climate Data Explorer - Map'
+
+block bodytag
+  body(class='map')
+
+block pagecontent
+  #controls
+  
+  #mapController
+    
+    #map
+    #subgraphA
+    #subgraphB
+            
+  #mainGraph
+
+block endbody
+  script(type='text/javascript', src='scripts/vendor/leaflet.js')
+  script(type='text/javascript', src='scripts/vendor/d3.js')
+  script(type='text/javascript', src='scripts/lib/main.js')
+  script(type='text/javascript').
+    ncd.Bootstrap();

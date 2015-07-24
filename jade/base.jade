@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+  block head
+  head
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet' href='styles/main.css')
+    link(rel='stylesheet' href='styles/vendor/leaflet.css')
+    
+    block title
+      title='Nasa Climate Data Explorer'
+      
+  block body
+    
+    block bodytag
+      body
+
+    block bodycontent
+      header
+        h1='Nasa Climate Data Explorer'
+
+      main
+  
+        #nav
+          ul
+            li
+              a(href="/")
+                ='Home'
+            li
+              a(href="/about.html")
+                ='About'
+            li
+              a(href="/map.html")
+                ='Map'
+  
+        #content
+
+          block pagecontent
+      
+      footer
+        h1!='Nasa Climate Data Explorer by <a href="http://www.stowaway.net">Joe Flintham</a>'
+
+      block endbody
+
+      

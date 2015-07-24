@@ -1,19 +1,40 @@
 body
   font-family Arial, sans-serif
-#map
-  width 200px
-  height 200px
 
+main
+  display flex
+
+  #nav
+    flex-grow 1
+  #content
+    flex-grow 5
+    display flex
+    flex-wrap wrap
+    
+    #mapController
+      width 100%
+      
+      #map
+        min-height 200px
+
+      #subgraphA, #subgraphB
+        width: 50%
+      
+                
+    #mainGraph
+      width 100%
+
+      svg
+        margin 0 auto
+        display block
+          
 circle.clicked-point
   stroke-width 1px
   stroke #ff0000
   fill #ff0000
   fill-opacity 0.5
-
-#yearGraph svg
-  margin 0 auto
-  display block
   
+    
 g.chart path 
   stroke-width 2px
   stroke #f00
