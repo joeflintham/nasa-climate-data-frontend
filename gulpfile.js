@@ -6,7 +6,6 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    jsdoc = require("gulp-jsdoc"),
     stylus = require('gulp-stylus'),
     jade = require('gulp-jade');
 
@@ -37,21 +36,6 @@ PATHS = {
 
 }
 
-var jsDocTemplateOptions = {
-    path: 'ink-docstrap',
-    systemName: 'nasa-climate-data',
-    navType: 'vertical',
-    theme: 'spacelab',
-    linenums: true,
-    collapseSymbols: false,
-    inverseNav: false
-};
-
-gulp.task('docs', function () {
-    gulp.src(PATHS.SRC.JS)
-	    .pipe(jsdoc.parser())
-	    .pipe(jsdoc.generator('./app/docs',jsDocTemplateOptions))
-});
 
 gulp.task('test', function (done) {
     karma.start({
@@ -71,10 +55,9 @@ gulp.task('js-lint', function () {
 gulp.task('build', function () {
 
     gulp.src(PATHS.SRC.JS)
-        .pipe(sourcemaps.init())
-//        .pipe(uglify())
-        .pipe(concat('main.js'))
-        .pipe(sourcemaps.write())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(gulp.dest('app/scripts/lib/'));
     
     gulp.src(PATHS.SRC.VENDOR.JS)

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "bower install",
-    "build": "gulp build",
+    "build": "gulp build && npm run build:js",
+    "build:js": "webpack",
     "prestart": "",
     "start": "http-server ./app -a 0.0.0.0 -p 8000 -c-1",
     "pretest": "npm install",
@@ -14,15 +15,24 @@
     "prepush": "npm run test",
     "postmerge": "npm install",
     "jsdocs": "gulp docs",
-    "lint": "gulp js-lint"
+    "lint": "eslint lib/"
   },
   "author": "Joe Flintham",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.13.2",
     "bower": "^1.4.1",
     "chai": "^3.0.0",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-import": "^1.14.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.1.2",
     "grunt-cli": "^0.1.13",
     "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.0.1",
     "gulp-jsdoc": "^0.1.4",
@@ -44,6 +54,7 @@
     "karma-mocha-reporter": "^1.0.2",
     "karma-phantomjs-launcher": "^0.2.0",
     "mocha": "^2.2.5",
-    "phantomjs": "^1.9.17"
+    "phantomjs": "^1.9.17",
+    "webpack": "^1.13.2"
   }
 }
