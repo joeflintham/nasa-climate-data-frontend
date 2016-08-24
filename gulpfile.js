@@ -53,12 +53,6 @@ gulp.task('js-lint', function () {
 });
 
 gulp.task('build', function () {
-
-    gulp.src(PATHS.SRC.JS)
-        .pipe(babel({
-            presets: ['es2015']
-        }))
-        .pipe(gulp.dest('app/scripts/lib/'));
     
     gulp.src(PATHS.SRC.VENDOR.JS)
         .pipe(gulp.dest('app/scripts/vendor/'));
