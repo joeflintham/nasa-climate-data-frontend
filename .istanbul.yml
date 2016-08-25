@@ -1,0 +1,12 @@
+instrumentation:
+    excludes: [
+      "gulpfile.js",
+      "karma.conf.js",
+      "webpack.config.js",
+      "bower_components/**/*",
+      "app/**/*",
+      "base/**/*"
+    ]
+    include-all-sources: true
+reporting:
+    dir: ./coverage/unit
