@@ -13,10 +13,9 @@ describe('api module', function () {
   
   beforeEach(function () {
     mockery.enable();
-    mockery.registerAllowable('../../lib/api.js');
-
+    mockery.warnOnUnregistered(false);
+    mockery.warnOnReplace(false);
     mockery.registerMock("./xhr.js", XHRMock);
-
     API = require('../../lib/api.js');
   });
   

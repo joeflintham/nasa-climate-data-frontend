@@ -16,10 +16,6 @@ module.exports = {
         query: {
           presets: 'es2015',
         }
-      },
-      {
-        loader: 'inject-loader',
-        test: path.join(__dirname, 'lib')
       }
     ]
   }
