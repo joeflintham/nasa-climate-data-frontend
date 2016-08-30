@@ -1,0 +1,15 @@
+{
+    "extends": "airbnb",
+    "installedESLint": true,
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+      "no-undef": 0,
+      "comma-dangle": 0,
+      "import/no-extraneous-dependencies": 0,
+      "max-len": 0,
+      "prefer-template": 0,
+      "no-param-reassign": 0
+    }
+}
